@@ -1,0 +1,9 @@
+:root {
+  --primary-font-color: #191A15;
+  --primary-background-color: #F3F3F3;
+  --secondary-background-color: #FBFBFB;
+  --primary-button-color: #54BE96;
+  --hovered-button-color: #36A379;
+  --primary-border-color: rgba(25, 26, 21, 0.10);
+  --modal-backdrop-color: rgba(25, 26, 21, 0.60)
+}

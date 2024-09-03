@@ -1,0 +1,40 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 96px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--primary-border-color);
+  background-color: var(--secondary-background-color);
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  height: 100%;
+}
+
+.logoLink {
+  padding: 10px 0 14px 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  span {
+    color: var(--primary-button-color);
+    transition: color 300ms ease-in;
+  }
+
+  &:hover span {
+    color: var(--hovered-button-color);
+  }
+}

@@ -1,0 +1,53 @@
+.userBarWrapper {
+  height: 100%;
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.userBarWrapper button {
+  height: 100%;
+  width: fit-content;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  transition: all 300ms ease-in;
+}
+
+.userInfo {
+  display: flex;
+  gap: 14px;
+  padding-right: 20px;
+  align-items: center;
+}
+
+.userInfo span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.loginBtn,
+.logoutBtn {
+  padding: 0 38px;
+  border: 1px solid var(--primary-border-color);
+  background-color: var(--secondary-background-color);
+}
+
+.registerBtn {
+  background-color: var(--primary-button-color);
+  color: var(--secondary-background-color);
+  padding: 0 40px;
+}
+
+.registerBtn:hover {
+  background-color: var(--hovered-button-color);
+}
+
+.loginBtn:hover,
+.logoutBtn:hover {
+  background-color: var(--primary-background-color);
+}
