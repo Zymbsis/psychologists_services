@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useModal } from '../../../helpers/context';
+import { useModal } from 'helpers';
+import { icon } from 'img';
 import css from './ModalBackdrop.module.css';
 
 const ModalBackdrop = ({ children }) => {
@@ -21,7 +22,9 @@ const ModalBackdrop = ({ children }) => {
           className={css.closeButton}
           type='button'
           onClick={closeModal}>
-          X
+          <svg>
+            <use href={`${icon}#icon-close`} />
+          </svg>
         </button>
         {children}
       </div>

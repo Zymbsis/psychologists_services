@@ -28,4 +28,17 @@
   right: 20px;
   width: 32px;
   height: 32px;
+  background-color: var(--secondary-background-color);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--primary-font-color);
+    pointer-events: none;
+    transition: stroke 300ms ease-in;
+  }
+
+  &:hover svg {
+    stroke: var(--modal-backdrop-color)
+  }
 }

@@ -1,6 +1,6 @@
-import css from './Header.module.css';
 import NavLinks from './NavLinks/NavLinks';
 import UserBar from './UserBar/UserBar';
+import css from './Header.module.css';
 
 const Header = () => {
   return (

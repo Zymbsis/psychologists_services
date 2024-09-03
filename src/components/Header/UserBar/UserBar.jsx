@@ -1,5 +1,5 @@
-import { useModal } from '../../../helpers/context';
-import icon from '../../../img/icons.svg';
+import { useModal } from 'helpers';
+import { icon } from 'img';
 import css from './UserBar.module.css';
 
 const UserBar = () => {

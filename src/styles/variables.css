@@ -1,9 +1,12 @@
 :root {
   --primary-font-color: #191A15;
+  --secondary-font-color: rgba(251, 251, 251, 0.50);
   --primary-background-color: #F3F3F3;
   --secondary-background-color: #FBFBFB;
   --primary-button-color: #54BE96;
   --hovered-button-color: #36A379;
   --primary-border-color: rgba(25, 26, 21, 0.10);
-  --modal-backdrop-color: rgba(25, 26, 21, 0.60)
+  --modal-backdrop-color: rgba(25, 26, 21, 0.60);
+  --decorative-element-1: #FBC75E;
+  --decorative-element-2: #4535AF;
 }

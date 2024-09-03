@@ -2,6 +2,9 @@ import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import css from './NavLinks.module.css';
 
+const getActiveClass = ({ isActive }) =>
+  clsx(css.navLink, { [css.activeLink]: isActive });
+
 const NavLinks = () => {
   const isUserLoggedIn = false;
 
@@ -16,9 +19,7 @@ const NavLinks = () => {
       </li>
       <li>
         <NavLink
-          className={({ isActive }) =>
-            clsx(css.navLink, { [css.activeLink]: isActive })
-          }
+          className={getActiveClass}
           to='/psychologists'>
           Psychologists
         </NavLink>
@@ -26,9 +27,7 @@ const NavLinks = () => {
       {isUserLoggedIn && (
         <li>
           <NavLink
-            className={({ isActive }) =>
-              clsx(css.navLink, { [css.activeLink]: isActive })
-            }
+            className={getActiveClass}
             to='/favorites'>
             Favorites
           </NavLink>

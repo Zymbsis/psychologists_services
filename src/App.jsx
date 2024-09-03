@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import Header from './components/Header/Header.jsx';
+import { Header } from 'components';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const PsychologistsPage = lazy(() => import('./pages/PsychologistsPage.jsx'));
