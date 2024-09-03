@@ -6,25 +6,20 @@
   width: 100vw;
   height: 100vh;
   background-color: var(--modal-backdrop-color);
-}
-
-.innerWrapper {
-  padding: 48px;
-  width: 100%;
-  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding: 48px;
 }
 
 .window {
   position: relative;
-  width: fit-content;
+  max-width: 100%;
   max-height: 100%;
   padding: 64px;
+  overflow-y: auto;
   border-radius: 30px;
   background-color: var(--secondary-background-color);
-  overflow-y: auto;
 }
 
 .closeButton {

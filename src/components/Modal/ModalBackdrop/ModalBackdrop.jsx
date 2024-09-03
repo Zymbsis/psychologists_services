@@ -13,19 +13,17 @@ const ModalBackdrop = ({ children }) => {
   }, [closeModal]);
 
   return (
-    <div className={css.backdrop}>
-      <div
-        className={css.innerWrapper}
-        onClick={closeModal}>
-        <div className={css.window}>
-          <button
-            className={css.closeButton}
-            type='button'
-            onClick={closeModal}>
-            X
-          </button>
-          {children}
-        </div>
+    <div
+      className={css.backdrop}
+      onClick={closeModal}>
+      <div className={css.window}>
+        <button
+          className={css.closeButton}
+          type='button'
+          onClick={closeModal}>
+          X
+        </button>
+        {children}
       </div>
     </div>
   );
