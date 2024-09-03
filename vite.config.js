@@ -13,7 +13,7 @@ export default defineConfig({
       helpers: '/src/helpers',
       img: '/src/img',
       '@redux': '/src/redux',
-      validationSchema: '/src/validationSchema',
+      validationSchemas: '/src/validationSchemas',
     },
   },
 });

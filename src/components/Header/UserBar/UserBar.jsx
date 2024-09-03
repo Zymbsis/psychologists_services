@@ -1,6 +1,7 @@
 import { useModal } from 'helpers';
 import { icon } from 'img';
 import css from './UserBar.module.css';
+import LoginForm from '../../LoginForm/LoginForm';
 
 const UserBar = () => {
   const isUserLoggedIn = false;
@@ -10,7 +11,7 @@ const UserBar = () => {
     openModal(<div>RegisterForm</div>);
   };
   const openLoginForm = () => {
-    openModal(<div>LoginForm</div>);
+    openModal(<LoginForm />);
   };
   const openLogoutForm = () => {
     openModal(<div>LogoutForm</div>);

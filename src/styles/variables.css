@@ -7,6 +7,8 @@
   --hovered-button-color: #36A379;
   --primary-border-color: rgba(25, 26, 21, 0.10);
   --modal-backdrop-color: rgba(25, 26, 21, 0.60);
+  --form-text-color: rgba(25, 26, 21, 0.50);
   --decorative-element-1: #FBC75E;
   --decorative-element-2: #4535AF;
+  --error-color: #E44848;
 }
