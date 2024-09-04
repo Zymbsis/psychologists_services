@@ -1,50 +1,57 @@
 import { useForm } from 'react-hook-form';
-import css from './RegistrationForm.module.css';
+import { useModal } from 'helpers';
+import AuthModal from '../AuthModal/AuthModal';
+import InputField from '../InputField/InputField';
+import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
+import { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerFormValidationSchema } from 'validationSchemas';
 
 const RegistrationForm = () => {
+  const { closeModal } = useModal();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const switchPasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ default: { name: '', email: '', password: '' } });
-  const onSubmit = (data) => {
+  } = useForm({
+    default: { name: '', email: '', password: '' },
+    resolver: yupResolver(registerFormValidationSchema),
+  });
+  const onSubmit = (data, form) => {
     console.log(data);
+    closeModal(form);
   };
   return (
-    <>
-      <h2>Registration</h2>
-      <p>
-        Thank you for your interest in our platform! In order to register, we
-        need some information. Please provide us with the following information.
-      </p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <input
-            className={errors.name && css.errorField}
-            placeholder='Name'
-            {...register('name')}
-          />
-          {errors.name && <span>{errors.name.message}</span>}
-        </label>
-        <label>
-          <input
-            className={errors.email && css.errorField}
-            placeholder='Email'
-            {...register('email')}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-        </label>
-        <label>
-          <input
-            className={errors.password && css.errorField}
-            placeholder='Password'
-            {...register('password')}
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </label>
-        <button type='submit'>Sign Up</button>
-      </form>
-    </>
+    <AuthModal
+      title='Registration'
+      intro='Thank you for your interest in our platform! In order to register, we
+        need some information. Please provide us with the following information.'
+      action='Sign Up'
+      onSubmit={handleSubmit(onSubmit)}>
+      <InputField
+        register={register}
+        errors={errors}
+        inputField='name'
+      />
+      <InputField
+        register={register}
+        errors={errors}
+        inputField='email'
+      />
+      <InputField
+        register={register}
+        errors={errors}
+        inputField='password'>
+        <PasswordVisibilitySwitcher
+          isPasswordVisible={isPasswordVisible}
+          switchPasswordVisibility={switchPasswordVisibility}
+        />
+      </InputField>
+    </AuthModal>
   );
 };
 

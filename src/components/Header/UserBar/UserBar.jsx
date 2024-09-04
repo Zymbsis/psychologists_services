@@ -2,13 +2,14 @@ import { useModal } from 'helpers';
 import { icon } from 'img';
 import css from './UserBar.module.css';
 import LoginForm from '../../LoginForm/LoginForm';
+import RegistrationForm from '../../RegistrationForm/RegistrationForm';
 
 const UserBar = () => {
   const isUserLoggedIn = false;
   const { openModal } = useModal();
 
   const openRegisterForm = () => {
-    openModal(<div>RegisterForm</div>);
+    openModal(<RegistrationForm />);
   };
   const openLoginForm = () => {
     openModal(<LoginForm />);

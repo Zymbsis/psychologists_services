@@ -1,13 +1,18 @@
 import { useForm } from 'react-hook-form';
-import css from './LoginForm.module.css';
-import { icon } from 'img';
+import { useModal } from 'helpers';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginFormValidationSchema } from 'validationSchemas';
+import AuthModal from '../AuthModal/AuthModal';
+import InputField from '../InputField/InputField';
+import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
 
 const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
+  const { closeModal } = useModal();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const switchPasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const {
     register,
     handleSubmit,
@@ -17,62 +22,33 @@ const LoginForm = () => {
     resolver: yupResolver(loginFormValidationSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, form) => {
     console.log(data);
+    closeModal(form);
   };
 
   return (
-    <>
-      <h2 className={css.title}>Log In</h2>
-      <p className={css.intro}>
-        Welcome back! Please enter your credentials to access your account and
-        continue your search for a psychologist.
-      </p>
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <input
-            className={errors.email && css.errorField}
-            type='text'
-            {...register('email')}
-            placeholder='Email'
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-        </label>
-        <label>
-          <input
-            className={errors.password && css.errorField}
-            type={showPassword ? 'text' : 'password'}
-            {...register('password')}
-            placeholder='Password'
-          />
-          {!showPassword ? (
-            <button
-              onClick={() => {
-                setShowPassword(true);
-              }}
-              aria-label='get password visible'>
-              <svg aria-label='closed eye'>
-                <use href={`${icon}#icon-closed-eye`} />
-              </svg>
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setShowPassword(false);
-              }}
-              aria-label='get password hidden'>
-              <svg aria-label='opened eye'>
-                <use href={`${icon}#icon-opened-eye`} />
-              </svg>
-            </button>
-          )}
-          {errors.password && <span>{errors.password.message}</span>}
-        </label>
-        <button className={css.submitBtn}>Log In</button>
-      </form>
-    </>
+    <AuthModal
+      title='Log In'
+      intro='Welcome back! Please enter your credentials to access your account and
+    continue your search for a psychologist.'
+      onSubmit={handleSubmit(onSubmit)}>
+      <InputField
+        register={register}
+        errors={errors}
+        inputField='email'
+      />
+      <InputField
+        register={register}
+        errors={errors}
+        inputField='password'
+        type={isPasswordVisible ? 'text' : 'password'}>
+        <PasswordVisibilitySwitcher
+          isPasswordVisible={isPasswordVisible}
+          switchPasswordVisibility={switchPasswordVisibility}
+        />
+      </InputField>
+    </AuthModal>
   );
 };
 

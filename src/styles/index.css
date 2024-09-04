@@ -6,6 +6,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 14px;
+  font-style: normal;
   color-scheme: light dark;
   color: var(--primary-font-color);
   background-color: var(--primary-background-color);
