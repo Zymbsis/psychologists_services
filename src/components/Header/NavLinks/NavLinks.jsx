@@ -5,9 +5,7 @@ import css from './NavLinks.module.css';
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.activeLink]: isActive });
 
-const NavLinks = () => {
-  const isUserLoggedIn = false;
-
+const NavLinks = ({ user }) => {
   return (
     <ul className={css.navLInksList}>
       <li>
@@ -24,7 +22,7 @@ const NavLinks = () => {
           Psychologists
         </NavLink>
       </li>
-      {isUserLoggedIn && (
+      {user && (
         <li>
           <NavLink
             className={getActiveClass}

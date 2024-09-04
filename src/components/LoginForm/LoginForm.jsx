@@ -6,6 +6,7 @@ import { loginFormValidationSchema } from 'validationSchemas';
 import AuthModal from '../AuthModal/AuthModal';
 import InputField from '../InputField/InputField';
 import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
+import { signIn } from '../../services/firebaseAuth';
 
 const LoginForm = () => {
   const { closeModal } = useModal();
@@ -23,7 +24,7 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data, form) => {
-    console.log(data);
+    signIn(data);
     closeModal(form);
   };
 
