@@ -6,6 +6,7 @@ import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVi
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormValidationSchema } from 'validationSchemas';
+import { signUp } from '../../services';
 
 const RegistrationForm = () => {
   const { closeModal } = useModal();
@@ -22,7 +23,7 @@ const RegistrationForm = () => {
     resolver: yupResolver(registerFormValidationSchema),
   });
   const onSubmit = (data, form) => {
-    console.log(data);
+    signUp(data);
     closeModal(form);
   };
   return (

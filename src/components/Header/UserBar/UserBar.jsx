@@ -3,9 +3,9 @@ import { icon } from 'img';
 import css from './UserBar.module.css';
 import LoginForm from '../../LoginForm/LoginForm';
 import RegistrationForm from '../../RegistrationForm/RegistrationForm';
+import LogoutModal from '../../LogoutModal/LogoutModal';
 
-const UserBar = () => {
-  const isUserLoggedIn = false;
+const UserBar = ({ user }) => {
   const { openModal } = useModal();
 
   const openRegisterForm = () => {
@@ -15,12 +15,12 @@ const UserBar = () => {
     openModal(<LoginForm />);
   };
   const openLogoutForm = () => {
-    openModal(<div>LogoutForm</div>);
+    openModal(<LogoutModal />);
   };
 
   return (
     <div className={css.userBarWrapper}>
-      {isUserLoggedIn ? (
+      {user ? (
         <>
           <div className={css.userInfo}>
             <svg
@@ -28,7 +28,7 @@ const UserBar = () => {
               height={40}>
               <use href={`${icon}#icon-user`} />
             </svg>
-            <span>Name</span>
+            <span>{user.displayName}</span>
           </div>
           <button
             className={css.logoutBtn}

@@ -2,7 +2,7 @@ import NavLinks from './NavLinks/NavLinks';
 import UserBar from './UserBar/UserBar';
 import css from './Header.module.css';
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header className={css.header}>
       <div className={`${css.container} container`}>
@@ -12,9 +12,9 @@ const Header = () => {
             href='/'>
             <span>psychologists.</span>services
           </a>
-          <NavLinks />
+          <NavLinks user={user} />
         </nav>
-        <UserBar />
+        <UserBar user={user} />
       </div>
     </header>
   );
