@@ -1,7 +1,8 @@
-import { signOut } from '../../services';
-import css from './LogoutModal.module.css';
 import { useModal } from 'helpers';
-const LogoutModal = () => {
+import { signOut } from 'services';
+import css from './LogoutPrompt.module.css';
+
+const LogoutPrompt = () => {
   const { closeModal } = useModal();
 
   const handleCancel = (e) => {
@@ -33,4 +34,4 @@ const LogoutModal = () => {
   );
 };
 
-export default LogoutModal;
+export default LogoutPrompt;

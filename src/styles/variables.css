@@ -1,6 +1,7 @@
 :root {
   --primary-font-color: #191A15;
   --secondary-font-color: rgba(251, 251, 251, 0.50);
+  --third-font-color: #8A8A89;
   --primary-background-color: #F3F3F3;
   --secondary-background-color: #FBFBFB;
   --primary-button-color: #54BE96;
@@ -11,4 +12,5 @@
   --decorative-element-1: #FBC75E;
   --decorative-element-2: #4535AF;
   --error-color: #E44848;
+  --accent-color: #38CD3E;
 }

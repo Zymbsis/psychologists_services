@@ -1,0 +1,49 @@
+.imgWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  border: 2px solid rgba(84, 190, 150, 0.20);
+  padding: 10px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 15px;
+}
+
+.imgWrapper::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2.5px solid var(--secondary-background-color);
+  border-radius: 50px;
+  background-color: var(--accent-color);
+  top: 7px;
+  right: 12px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.description {
+  color: var(--form-text-color);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.readMoreBtn {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  margin-top: 14px;
+}

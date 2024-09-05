@@ -1,6 +1,6 @@
-import css from './AuthModal.module.css';
+import css from './AuthFormLayout.module.css';
 
-const AuthModal = ({
+const AuthFormLayout = ({
   title,
   intro,
   action = title,
@@ -28,4 +28,4 @@ const AuthModal = ({
   );
 };
 
-export default AuthModal;
+export default AuthFormLayout;

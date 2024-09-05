@@ -1,55 +1,56 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { Header } from 'components';
+import { lazy, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './services/firebaseAuth.js';
+
+import { selectIsLoggedIn } from './redux/user/selectors.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserName, setUserStatus } from './redux/user/slice.js';
+import { SharedLayout } from 'components';
+import { auth } from './services/firebaseApp.js';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const PsychologistsPage = lazy(() => import('./pages/PsychologistsPage.jsx'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage.jsx'));
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log('User is logged in');
-        setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        dispatch(setUserStatus(true));
+        if (currentUser.displayName) {
+          dispatch(setUserName(currentUser.displayName));
+        }
       } else {
-        setUser(null);
-        console.log('User is logged out');
+        dispatch(setUserStatus(false));
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   return (
-    <>
-      <Header user={user} />
-      <main>
-        <Suspense fallback={<p>...Loading</p>}>
-          <Routes>
-            <Route
-              path='/'
-              element={<HomePage />}
-            />
-            <Route
-              path='/psychologists'
-              element={<PsychologistsPage />}
-            />
-            <Route
-              path='/favorites'
-              element={user ? <FavoritesPage /> : <Navigate to='/' />}
-            />
-            <Route
-              path='*'
-              element={<Navigate to='/' />}
-            />
-          </Routes>
-        </Suspense>
-      </main>
-    </>
+    <SharedLayout>
+      <Routes>
+        <Route
+          path='/'
+          element={<HomePage />}
+        />
+        <Route
+          path='/psychologists'
+          element={<PsychologistsPage />}
+        />
+        <Route
+          path='/favorites'
+          element={isUserLoggedIn ? <FavoritesPage /> : <Navigate to='/' />}
+        />
+        <Route
+          path='*'
+          element={<Navigate to='/' />}
+        />
+      </Routes>
+    </SharedLayout>
   );
 };
 

@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  color: var(--third-font-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.infoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.rating {
+  margin-right: 32px;
+}
+
+.rating,
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.rating::after {
+  content: '';
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  width: 1px;
+  background-color: rgba(25, 26, 21, 0.20);
+  right: -15.5px;
+  top: 2px;
+}
+
+.price {
+  margin-right: 28px;
+}
+
+.price > span {
+  color: var(--accent-color);
+}
+
+.heartBtn {
+  width: 26px;
+  height: 26px;
+}
+
+.heartIcon {
+  stroke: var(--primary-font-color);
+  fill: var(--secondary-background-color);
+}

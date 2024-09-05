@@ -1,0 +1,79 @@
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 48px;
+  margin-bottom: 40px;
+}
+
+.reviews > li {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ratingWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  background: rgba(84, 190, 150, 0.20);
+  color: #54BE96;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.rating {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.rating > span {
+  font-weight: 500;
+  line-height: 1.28;
+}
+
+.rating > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.comment {
+  color: var(--form-text-color);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.appointmentBtn {
+  padding: 14px 32px;
+  border-radius: 30px;
+  background: var(--primary-button-color);
+  color: var(--secondary-background-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  transition: background-color 300ms ease-in;
+
+  &:hover {
+    background-color: var(--hovered-button-color);
+  }
+}

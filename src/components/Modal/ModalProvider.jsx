@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { modalContext } from 'helpers';
 import { createPortal } from 'react-dom';
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
+import { toast } from 'react-toastify';
 
 const ModalProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
 
   const openModal = (content) => {
+    toast.dismiss();
     setModalContent(content);
   };
 

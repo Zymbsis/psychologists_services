@@ -1,35 +1,33 @@
-import { useForm } from 'react-hook-form';
-import { useModal } from 'helpers';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginFormValidationSchema } from 'validationSchemas';
-import AuthModal from '../AuthModal/AuthModal';
+import AuthFormLayout from '../AuthFormLayout/AuthFormLayout';
 import InputField from '../InputField/InputField';
 import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
-import { signIn } from '../../services/firebaseAuth';
+import { useSignIn } from 'services';
 
 const LoginForm = () => {
-  const { closeModal } = useModal();
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const switchPasswordVisibility = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-  };
+  const signIn = useSignIn();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    default: { email: '', password: '' },
+    defaultValues: { email: '', password: '' },
     resolver: yupResolver(loginFormValidationSchema),
   });
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const switchPasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const onSubmit = (data, form) => {
-    signIn(data);
-    closeModal(form);
+    signIn(data, form);
   };
 
   return (
-    <AuthModal
+    <AuthFormLayout
       title='Log In'
       intro='Welcome back! Please enter your credentials to access your account and
     continue your search for a psychologist.'
@@ -49,7 +47,7 @@ const LoginForm = () => {
           switchPasswordVisibility={switchPasswordVisibility}
         />
       </InputField>
-    </AuthModal>
+    </AuthFormLayout>
   );
 };
 

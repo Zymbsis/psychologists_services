@@ -1,1 +1,1 @@
-export { signUp, signIn, signOut } from './firebaseAuth';
+export { signUp, signOut, useSignIn } from './firebaseAuth';

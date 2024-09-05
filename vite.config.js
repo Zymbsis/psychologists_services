@@ -12,7 +12,7 @@ export default defineConfig({
       components: '/src/components',
       helpers: '/src/helpers',
       img: '/src/img',
-      services: 'src/services',
+      services: '/src/services',
       '@redux': '/src/redux',
       validationSchemas: '/src/validationSchemas',
     },

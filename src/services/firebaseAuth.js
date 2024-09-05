@@ -1,13 +1,13 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signOut as logout,
   updateProfile,
 } from 'firebase/auth';
-import { firebaseApp } from './firebaseApp';
+import { toast } from 'react-toastify';
+import { useModal } from 'helpers';
+import { auth } from './firebaseApp';
 
-export const auth = getAuth(firebaseApp);
 
 export const signUp = async ({ name, email, password }) => {
   try {
@@ -19,20 +19,52 @@ export const signUp = async ({ name, email, password }) => {
     await updateProfile(user, {
       displayName: name,
     });
-    console.log(user);
-
-    return user;
+    return { ...user, displayName: name };
   } catch (error) {
     console.log(error);
   }
 };
-export const signIn = async ({ email, password }) => {
-  try {
-    const { user } = await signInWithEmailAndPassword(auth, email, password);
-    return user;
-  } catch (error) {
-    console.log(error);
-  }
+
+const errorMessagesMap = {
+  invalidCredential: {
+    serverMsg: 'invalid-credential',
+    clientMsg: 'Wrong email or password! Please check your credential',
+  },
+  manyRequests: {
+    serverMsg: 'too-many-requests',
+    clientMsg: 'Too many failed login attempts! Please try again later',
+  },
+  anotherError: {
+    serverMsg: '',
+    clientMsg:
+      'An unknown error occurred. Please reload the page, or try again later',
+  },
+};
+const { invalidCredential, manyRequests, anotherError } = errorMessagesMap;
+
+export const useSignIn = () => {
+  const { closeModal } = useModal();
+  const invalidCredId = 'inv-cred-id';
+
+  return async ({ email, password }, form) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      closeModal(form);
+      toast.dismiss(invalidCredId);
+    } catch ({ message }) {
+      if (message.includes(invalidCredential.serverMsg)) {
+        toast.error(invalidCredential.clientMsg, {
+          toastId: invalidCredId,
+        });
+        return;
+      }
+      message.includes(manyRequests.serverMsg)
+        ? toast.error(manyRequests.clientMsg)
+        : toast.error(anotherError.clientMsg);
+      closeModal(form);
+      toast.dismiss(invalidCredId);
+    }
+  };
 };
 
 export const signOut = async () => {
@@ -40,5 +72,16 @@ export const signOut = async () => {
     await logout(auth);
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const updateUserName = async (name) => {
+  try {
+    const { currentUser } = auth;
+    await updateProfile(currentUser, {
+      displayName: name,
+    });
+  } catch (error) {
+    console.error(error);
   }
 };
