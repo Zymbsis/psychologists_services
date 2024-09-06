@@ -9,18 +9,18 @@ const psychologistsSlice = createSlice({
   initialState: {
     psychologistsList: [],
     favoritesList: [],
-    lastResult: '',
+    sortQuery: '',
     hasNextPage: true,
     sortType: 'A to Z',
     isLoading: false,
   },
   reducers: {
     getNextRequest(state, action) {
-      state.lastResult = action.payload;
+      state.sortQuery = action.payload;
     },
     getSortType(state, action) {
       state.sortType = action.payload;
-      state.lastResult = '';
+      state.sortQuery = '';
     },
     addToFavorite(state, action) {
       state.favoritesList.push(action.payload);
@@ -38,7 +38,7 @@ const psychologistsSlice = createSlice({
       })
       .addCase(getPsychologistsFromAtoZ.fulfilled, (state, action) => {
         state.isLoading = false;
-        if (state.lastResult) {
+        if (state.sortQuery) {
           state.psychologistsList.push(...action.payload.sortedData);
         } else {
           state.psychologistsList = action.payload.sortedData;
@@ -53,7 +53,7 @@ const psychologistsSlice = createSlice({
       })
       .addCase(getPsychologistsFromZtoA.fulfilled, (state, action) => {
         state.isLoading = false;
-        if (state.lastResult) {
+        if (state.sortQuery) {
           state.psychologistsList.push(...action.payload.sortedData);
         } else {
           state.psychologistsList = action.payload.sortedData;

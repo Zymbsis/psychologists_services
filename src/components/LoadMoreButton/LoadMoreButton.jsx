@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getNextRequest } from '../../redux/psychologists/slice';
 import {
   selectHasNextPage,
   selectPsychologistsList,
 } from '../../redux/psychologists/selectors';
 import css from './LoadMoreButton.module.css';
+import { getNextRequest } from '../../redux/psychologists/slice';
 
 const LoadMoreButton = () => {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectLastResult,
+  selectSortQuery,
   selectSortType,
 } from '../../redux/psychologists/selectors';
 import {
@@ -14,7 +14,7 @@ import {
 
 const SharedLayout = ({ children }) => {
   const dispatch = useDispatch();
-  const sortQuery = useSelector(selectLastResult);
+  const sortQuery = useSelector(selectSortQuery);
   const sortType = useSelector(selectSortType);
 
   useEffect(() => {
