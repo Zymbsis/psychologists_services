@@ -1,10 +1,23 @@
-import css from './PsychologistCardHeader.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavoritesList } from '../../redux/psychologists/selectors';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+} from '../../redux/psychologists/slice';
 import { icon } from 'img';
+import css from './PsychologistCardHeader.module.css';
 
-const PsychologistCardHeader = ({ rating, price, _id }) => {
+const PsychologistCardHeader = ({ rating, price, item }) => {
+  const dispatch = useDispatch();
+  const favoriteList = useSelector(selectFavoritesList);
+  const isThisCardFavorite = favoriteList.some((elem) => elem._id === item._id);
+
   const onButtonClick = () => {
-    console.log(_id);
+    isThisCardFavorite
+      ? dispatch(deleteFromFavorite(item._id))
+      : dispatch(addToFavorite(item));
   };
+
   return (
     <div className={css.wrapper}>
       <h2 className={css.cardTitle}>Psychologist</h2>
@@ -17,7 +30,7 @@ const PsychologistCardHeader = ({ rating, price, _id }) => {
           Price / 1 hour: <span>{price}&#36;</span>
         </p>
         <button
-          className={css.heartBtn}
+          className={`${css.heartBtn} ${isThisCardFavorite && css.favoriteBtn}`}
           onClick={onButtonClick}>
           <svg className={css.heartIcon}>
             <use href={`${icon}#icon-heart`} />

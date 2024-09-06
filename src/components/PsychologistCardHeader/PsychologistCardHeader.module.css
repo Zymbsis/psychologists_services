@@ -58,7 +58,12 @@
   height: 26px;
 }
 
-.heartIcon {
+.heartBtn > svg {
   stroke: var(--primary-font-color);
   fill: var(--secondary-background-color);
+}
+
+.heartBtn.favoriteBtn > svg {
+  fill: var(--primary-button-color);
+  stroke: var(--primary-button-color);
 }

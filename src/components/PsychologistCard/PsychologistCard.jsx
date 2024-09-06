@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PsychologistCardHeader from '../PsychologistCardHeader/PsychologistCardHeader';
 import PsychologistDetails from '../PsychologistDetails/PsychologistDetails';
-import css from './PsychologistCard.module.css';
 import PsychologistReviews from '../PsychologistReviews/PsychologistReviews';
+import css from './PsychologistCard.module.css';
 
 const PsychologistCard = ({ item }) => {
   const [showReviews, setShowReviews] = useState(false);
@@ -17,7 +17,6 @@ const PsychologistCard = ({ item }) => {
     initial_consultation,
     about,
     reviews,
-    _id,
   } = item;
   const details = [
     { experience },
@@ -41,7 +40,7 @@ const PsychologistCard = ({ item }) => {
         <PsychologistCardHeader
           rating={rating}
           price={price_per_hour}
-          _id={_id}
+          item={item}
         />
         <h3 className={css.name}>{name}</h3>
         <PsychologistDetails details={details} />

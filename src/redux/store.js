@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from './user/slice';
 import {
   persistStore,
-  // persistReducer,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,19 +11,21 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { psychologistsReducer } from './psychologists/slice';
-// import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const psychologistsPersistConfig = {
+  key: 'psychologists',
+  storage,
+  whitelist: ['favoritesList'],
+};
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    psychologists: psychologistsReducer,
-    // auth: persistReducer(authPersistConfig, authReducer),
+    psychologists: persistReducer(
+      psychologistsPersistConfig,
+      psychologistsReducer,
+    ),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

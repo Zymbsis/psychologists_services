@@ -1,12 +1,11 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-
-import { selectIsLoggedIn } from './redux/user/selectors.js';
+import { auth } from './services/firebaseApp.js';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn } from './redux/user/selectors.js';
 import { setUserName, setUserStatus } from './redux/user/slice.js';
 import { SharedLayout } from 'components';
-import { auth } from './services/firebaseApp.js';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const PsychologistsPage = lazy(() => import('./pages/PsychologistsPage.jsx'));

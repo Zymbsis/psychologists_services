@@ -1,17 +1,29 @@
 import { Suspense, useEffect } from 'react';
 import { Bounce, ToastContainer } from 'react-toastify';
-import { Header } from 'components';
+import Header from '../Header/Header';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLastResult } from '../../redux/psychologists/selectors';
-import { getPsychologistsFirstRequest } from '../../redux/psychologists/operations';
+import {
+  selectLastResult,
+  selectSortType,
+} from '../../redux/psychologists/selectors';
+import {
+  getPsychologistsFromAtoZ,
+  getPsychologistsFromZtoA,
+} from '../../redux/psychologists/operations';
 
 const SharedLayout = ({ children }) => {
   const dispatch = useDispatch();
-  const lastResult = useSelector(selectLastResult);
+  const sortQuery = useSelector(selectLastResult);
+  const sortType = useSelector(selectSortType);
+
   useEffect(() => {
-    dispatch(getPsychologistsFirstRequest({ condition: lastResult }));
-  }, [dispatch, lastResult]);
+    if (sortType === 'A to Z') {
+      dispatch(getPsychologistsFromAtoZ(sortQuery));
+    } else if (sortType === 'Z to A') {
+      dispatch(getPsychologistsFromZtoA(sortQuery));
+    }
+  }, [dispatch, sortQuery, sortType]);
 
   return (
     <div>

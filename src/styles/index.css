@@ -31,6 +31,16 @@
   background-color: var(--primary-border-color);
 }
 
+.section {
+  width: 100%;
+  padding: 164px 0 100px 0;
+}
+
+.section.home-section {
+  min-height: 100vh;
+  background-color: var(--secondary-background-color);
+}
+
 .container {
   width: 1440px;
   margin: 0 auto;

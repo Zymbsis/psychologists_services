@@ -1,0 +1,10 @@
+.wrapper {
+  margin-bottom: 32px;
+}
+
+.title {
+  color: var(--third-font-color);
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 8px;
+}

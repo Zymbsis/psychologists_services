@@ -1,12 +1,6 @@
-.section {
-  width: 100%;
-  padding: 174px 0 100px 0;
-  background-color: var(--secondary-background-color);
-  min-height: 100vh;
-}
-
 .container {
   position: relative;
+  padding-top: 10px;
   background-image: image-set(url('../../img/home_background_@1x_webp.webp'), url('../../img/home_background_@1x_png.png'));
   background-repeat: no-repeat;
   background-position: center right 128px;
@@ -44,32 +38,6 @@
   line-height: 1.33;
   letter-spacing: -0.02em;
   margin-bottom: 40px;
-}
-
-.getStartedLink {
-  padding: 18px 50px;
-  background-color: var(--primary-button-color);
-  border-radius: 30px;
-  color: var(--secondary-background-color);
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  height: 60px;
-  width: fit-content;
-  transition: background-color 300ms ease-in;
-
-  svg {
-    height: 24px;
-    width: 11px;
-  }
-
-  &:hover {
-    background-color: var(--hovered-button-color);
-  }
 }
 
 .featureBadge {

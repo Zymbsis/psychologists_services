@@ -1,14 +1,17 @@
-import PsychologistsList from '../components/PsychologistsList/PsychologistsList';
-import LoadMoreButton from '../components/LoadMoreButton/LoadMoreButton';
+import { FilterBar, PsychologistsList, LoadMoreButton } from 'components';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from '../redux/psychologists/selectors';
 
 const PsychologistsPage = () => {
+  const isLoading = useSelector(selectIsLoading);
   return (
-    <div style={{ padding: '164px 0 100px 0' }}>
+    <section className='section'>
       <div className='container'>
+        <FilterBar />
         <PsychologistsList />
-        <LoadMoreButton />
+        {!isLoading && <LoadMoreButton />}
       </div>
-    </div>
+    </section>
   );
 };
 

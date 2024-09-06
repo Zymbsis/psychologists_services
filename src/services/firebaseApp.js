@@ -1,6 +1,14 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import {
+  endBefore,
+  get,
+  getDatabase,
+  limitToLast,
+  orderByChild,
+  query,
+  ref,
+} from 'firebase/database';
 
 export const firebaseApp = initializeApp({
   apiKey: 'AIzaSyDxZZOkawrhm9yqJz1c6ncrpuqT2MWqwm4',
@@ -15,3 +23,27 @@ export const firebaseApp = initializeApp({
 });
 export const auth = getAuth(firebaseApp);
 export const db = getDatabase(firebaseApp);
+
+// const dbRef = ref(db, '/');
+
+// const getPsychologistsRequest = async () => {
+//   try {
+//     const snapshot = await get(
+//       query(dbRef, orderByChild('name'), endBefore('Y'), limitToLast(3)),
+//     );
+//     if (snapshot.exists()) {
+//       const result = snapshot.val();
+//       console.log(result);
+
+//       const data = Object.keys(result).map((item) => {
+//         return { _id: item, ...result[item] };
+//       });
+//       console.log(data);
+//     } else {
+//       return { sortedData: [], lastResult: '', hasNextPage: false };
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// getPsychologistsRequest();

@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  endBefore,
   get,
   limitToFirst,
+  limitToLast,
   orderByChild,
   query,
   ref,
@@ -11,18 +13,15 @@ import {
 import { db } from '../../services/firebaseApp';
 const dbRef = ref(db, '/');
 
-export const getPsychologistsFirstRequest = createAsyncThunk(
-  'psychologists/getPsychologistsFirstRequest',
-  async (
-    { childKey = 'name', method = startAfter, condition = '' },
-    thunkAPI,
-  ) => {
+export const getPsychologistsFromAtoZ = createAsyncThunk(
+  'psychologists/getPsychologistsFromAtoZ',
+  async (condition, thunkAPI) => {
     try {
       const snapshot = await get(
         query(
           dbRef,
-          orderByChild(childKey),
-          method(condition),
+          orderByChild('name'),
+          startAfter(condition),
           limitToFirst(3),
         ),
       );
@@ -32,12 +31,43 @@ export const getPsychologistsFirstRequest = createAsyncThunk(
           return { _id: item, ...result[item] };
         });
         const sortedData = data.toSorted((a, b) =>
-          a[childKey].localeCompare(b[childKey]),
+          a.name.localeCompare(b.name),
         );
         const hasNextPage = sortedData.length % 3 === 0;
         return { sortedData, hasNextPage };
       } else {
-        return { sortedData: [], lastResult: '', hasNextPage: false };
+        return { sortedData: [], hasNextPage: false };
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+export const getPsychologistsFromZtoA = createAsyncThunk(
+  'psychologists/getPsychologistsFromZtoA',
+  async (condition, thunkAPI) => {
+    try {
+      const snapshot = await get(
+        query(
+          dbRef,
+          orderByChild('name'),
+          endBefore(condition ? condition : 'Y'),
+          limitToLast(3),
+        ),
+      );
+      if (snapshot.exists()) {
+        const result = snapshot.val();
+        const data = Object.keys(result).map((item) => {
+          return { _id: item, ...result[item] };
+        });
+        const sortedData = data
+          .toSorted((a, b) => a.name.localeCompare(b.name))
+          .reverse();
+
+        const hasNextPage = sortedData.length % 3 === 0;
+        return { sortedData, hasNextPage };
+      } else {
+        return { sortedData: [], hasNextPage: false };
       }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

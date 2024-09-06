@@ -1,0 +1,25 @@
+.getStartedLink {
+  padding: 18px 50px;
+  background-color: var(--primary-button-color);
+  border-radius: 30px;
+  color: var(--secondary-background-color);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  height: 60px;
+  width: fit-content;
+  transition: background-color 300ms ease-in;
+
+  svg {
+    height: 24px;
+    width: 11px;
+  }
+
+  &:hover {
+    background-color: var(--hovered-button-color);
+  }
+}
