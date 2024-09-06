@@ -1,16 +1,16 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { Suspense, useEffect } from 'react';
 import { Bounce, ToastContainer } from 'react-toastify';
-import Header from '../Header/Header';
-import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectSortQuery,
   selectSortType,
-} from '../../redux/psychologists/selectors';
+} from '@redux/psychologists/selectors';
 import {
   getPsychologistsFromAtoZ,
   getPsychologistsFromZtoA,
-} from '../../redux/psychologists/operations';
+} from '@redux/psychologists/operations';
+import Header from '../Header/Header';
 
 const SharedLayout = ({ children }) => {
   const dispatch = useDispatch();

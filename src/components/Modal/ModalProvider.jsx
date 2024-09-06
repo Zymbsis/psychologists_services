@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { modalContext } from 'helpers';
 import { createPortal } from 'react-dom';
-import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 import { toast } from 'react-toastify';
+import { modalContext } from 'helpers';
+import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
 const ModalProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
 
   const openModal = (content) => {
+    document.body.style.overflow = 'hidden';
     toast.dismiss();
     setModalContent(content);
   };
@@ -18,6 +19,7 @@ const ModalProvider = ({ children }) => {
       e.target === e.currentTarget ||
       e.type === 'submit'
     ) {
+      document.body.style.overflow = 'visible';
       setModalContent(null);
     }
   };

@@ -7,11 +7,13 @@ const AuthFormLayout = ({
   onSubmit,
   children,
   className,
+  additionalComponent,
 }) => {
   return (
     <div className={`${css.wrapper} ${className}`}>
       <h2 className={css.title}>{title}</h2>
       <p className={css.intro}>{intro}</p>
+      {additionalComponent}
       <form
         className={css.form}
         onSubmit={onSubmit}>

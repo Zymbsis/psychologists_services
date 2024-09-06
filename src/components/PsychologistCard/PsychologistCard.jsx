@@ -46,7 +46,11 @@ const PsychologistCard = ({ item }) => {
         <PsychologistDetails details={details} />
         <p className={css.description}>{about}</p>
         {showReviews ? (
-          <PsychologistReviews reviews={reviews} />
+          <PsychologistReviews
+            reviews={reviews}
+            name={name}
+            photo={avatar_url}
+          />
         ) : (
           <button
             className={css.readMoreBtn}

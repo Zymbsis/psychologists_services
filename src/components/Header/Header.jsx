@@ -2,7 +2,7 @@ import NavigationList from '../NavigationList/NavigationList';
 import UserMenu from '../UserMenu/UserMenu';
 import css from './Header.module.css';
 
-const Header = ({ user }) => {
+const Header = () => {
   return (
     <header className={css.header}>
       <div className={`${css.container} container`}>

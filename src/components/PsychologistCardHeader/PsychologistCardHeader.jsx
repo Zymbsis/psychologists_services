@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavoritesList } from '../../redux/psychologists/selectors';
-import {
-  addToFavorite,
-  deleteFromFavorite,
-} from '../../redux/psychologists/slice';
+import { selectFavoritesList } from '@redux/psychologists/selectors';
+import { addToFavorite, deleteFromFavorite } from '@redux/psychologists/slice';
 import { icon } from 'img';
 import css from './PsychologistCardHeader.module.css';
 

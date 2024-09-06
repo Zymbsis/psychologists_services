@@ -1,14 +1,11 @@
+import { useSelector } from 'react-redux';
+import { selectCurrentUser, selectIsLoggedIn } from '@redux/user/selectors';
 import { useModal } from 'helpers';
 import { icon } from 'img';
 import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LogoutPrompt from '../LogoutPrompt/LogoutPrompt';
 import css from './UserMenu.module.css';
-import { useSelector } from 'react-redux';
-import {
-  selectCurrentUser,
-  selectIsLoggedIn,
-} from '../../redux/user/selectors';
 
 const UserMenu = () => {
   const { openModal } = useModal();

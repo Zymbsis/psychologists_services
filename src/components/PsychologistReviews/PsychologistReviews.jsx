@@ -1,12 +1,18 @@
-import css from './PsychologistReviews.module.css';
-import { icon } from 'img';
 import { useModal } from 'helpers';
+import { icon } from 'img';
+import AppointmentForm from '../AppointmentForm/AppointmentForm';
+import css from './PsychologistReviews.module.css';
 
-const PsychologistReviews = ({ reviews }) => {
+const PsychologistReviews = ({ reviews, name, photo }) => {
   const { openModal } = useModal();
 
   const openAppointmentForm = () => {
-    openModal(<p>Appointment Form</p>);
+    openModal(
+      <AppointmentForm
+        name={name}
+        photo={photo}
+      />,
+    );
   };
 
   return (

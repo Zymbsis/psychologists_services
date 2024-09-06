@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import css from './FilterBar.module.css';
 import Select from 'react-select';
-import { getSortType } from '../../redux/psychologists/slice';
-import { selectSortType } from '../../redux/psychologists/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSortType } from '@redux/psychologists/slice';
+import { selectSortType } from '@redux/psychologists/selectors';
 import { styles } from './FilterBarStyles';
+import css from './FilterBar.module.css';
 
 const options = [
   { value: 'startAfter', label: 'A to Z' },

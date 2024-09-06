@@ -1,12 +1,12 @@
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import css from './PsychologistsList.module.css';
 import {
   selectIsLoading,
   selectPsychologistsList,
   selectSortQuery,
-} from '../../redux/psychologists/selectors';
+} from '@redux/psychologists/selectors';
 import PsychologistCard from '../PsychologistCard/PsychologistCard';
-import { useEffect, useRef, useState } from 'react';
+import css from './PsychologistsList.module.css';
 
 const PsychologistsList = () => {
   const [firstRender, setFirstRender] = useState(true);

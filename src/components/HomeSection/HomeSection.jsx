@@ -1,6 +1,6 @@
 import { icon } from 'img';
-import css from './HomeSection.module.css';
 import GetStartedLink from '../GetStartedLink/GetStartedLink';
+import css from './HomeSection.module.css';
 
 const HomeSection = () => {
   return (

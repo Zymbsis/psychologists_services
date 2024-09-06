@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '@redux/user/selectors';
 import clsx from 'clsx';
 import css from './NavigationList.module.css';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/user/selectors';
 
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.activeLink]: isActive });

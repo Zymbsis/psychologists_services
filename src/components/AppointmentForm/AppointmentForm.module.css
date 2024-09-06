@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.wrapper > img {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+}
+
+.wrapper > p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.wrapper > p > span {
+  color: var(--third-font-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  display: block;
+  margin-bottom: 4px;
+}

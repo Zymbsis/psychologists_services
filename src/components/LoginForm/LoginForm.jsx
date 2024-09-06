@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginFormValidationSchema } from 'validationSchemas';
+import { useSignIn } from 'services';
 import AuthFormLayout from '../AuthFormLayout/AuthFormLayout';
 import InputField from '../InputField/InputField';
 import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
-import { useSignIn } from 'services';
 
 const LoginForm = () => {
   const signIn = useSignIn();

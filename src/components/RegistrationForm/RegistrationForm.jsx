@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormValidationSchema } from 'validationSchemas';
+import { useDispatch } from 'react-redux';
+import { setUserName } from '@redux/user/slice';
 import { signUp } from 'services';
 import { useModal } from 'helpers';
 import AuthFormLayout from '../AuthFormLayout/AuthFormLayout';
 import InputField from '../InputField/InputField';
 import PasswordVisibilitySwitcher from '../PasswordVisibilitySwitcher/PasswordVisibilitySwitcher';
-import { useDispatch } from 'react-redux';
-import { setUserName } from '../../redux/user/slice';
 
 const RegistrationForm = () => {
   const { closeModal } = useModal();

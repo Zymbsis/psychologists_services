@@ -1,6 +1,7 @@
-import { signOut } from '../../services';
-import css from './LogoutModal.module.css';
+import { signOut } from 'services';
 import { useModal } from 'helpers';
+import css from './LogoutModal.module.css';
+
 const LogoutModal = () => {
   const { closeModal } = useModal();
 

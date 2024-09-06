@@ -4,10 +4,13 @@ import {
   // endBefore,
   // get,
   getDatabase,
+  // limitToFirst,
   // limitToLast,
+  // onValue,
   // orderByChild,
   // query,
   // ref,
+  // startAfter,
 } from 'firebase/database';
 
 export const firebaseApp = initializeApp({
@@ -29,7 +32,7 @@ export const db = getDatabase(firebaseApp);
 // const getPsychologistsRequest = async () => {
 //   try {
 //     const snapshot = await get(
-//       query(dbRef, orderByChild('name'), endBefore('Y'), limitToLast(3)),
+//       query(dbRef, orderByChild('rating'), startAfter(4.65), limitToFirst(10)),
 //     );
 //     if (snapshot.exists()) {
 //       const result = snapshot.val();
@@ -38,7 +41,7 @@ export const db = getDatabase(firebaseApp);
 //       const data = Object.keys(result).map((item) => {
 //         return { _id: item, ...result[item] };
 //       });
-//       console.log(data);
+//       console.log(data.toSorted((a, b) => a.rating - b.rating));
 //     } else {
 //       return { sortedData: [], lastResult: '', hasNextPage: false };
 //     }

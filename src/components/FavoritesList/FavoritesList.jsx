@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import css from './FavoritesList.module.css';
-import { selectFavoritesList } from '../../redux/psychologists/selectors';
+import { selectFavoritesList } from '@redux/psychologists/selectors';
 import PsychologistCard from '../PsychologistCard/PsychologistCard';
+import css from './FavoritesList.module.css';
 
 const FavoritesList = () => {
   const favoritesList = useSelector(selectFavoritesList);
