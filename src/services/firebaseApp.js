@@ -1,13 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
-  endBefore,
-  get,
+  // endBefore,
+  // get,
   getDatabase,
-  limitToLast,
-  orderByChild,
-  query,
-  ref,
+  // limitToLast,
+  // orderByChild,
+  // query,
+  // ref,
 } from 'firebase/database';
 
 export const firebaseApp = initializeApp({
