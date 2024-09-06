@@ -20,7 +20,7 @@ const UserMenu = () => {
       {isUserLoggedIn ? (
         <>
           <div className={css.userInfo}>
-            <svg >
+            <svg>
               <use href={`${icon}#icon-user`} />
             </svg>
             <span>{userName ? userName : 'User'}</span>

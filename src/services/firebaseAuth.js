@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { useModal } from 'helpers';
 import { auth } from './firebaseApp';
 
-
 export const signUp = async ({ name, email, password }) => {
   try {
     const { user } = await createUserWithEmailAndPassword(

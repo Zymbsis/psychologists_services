@@ -5,7 +5,6 @@ import PsychologistCard from '../PsychologistCard/PsychologistCard';
 
 const PsychologistsList = () => {
   const psychologistsList = useSelector(selectPsychologistsList);
-  console.log(psychologistsList);
 
   return (
     <div>

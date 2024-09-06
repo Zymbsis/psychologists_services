@@ -1,9 +1,18 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Bounce, ToastContainer } from 'react-toastify';
 import { Header } from 'components';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLastResult } from '../../redux/psychologists/selectors';
+import { getPsychologistsFirstRequest } from '../../redux/psychologists/operations';
 
 const SharedLayout = ({ children }) => {
+  const dispatch = useDispatch();
+  const lastResult = useSelector(selectLastResult);
+  useEffect(() => {
+    dispatch(getPsychologistsFirstRequest({ condition: lastResult }));
+  }, [dispatch, lastResult]);
+
   return (
     <div>
       <>
