@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 8px;
 }
@@ -15,6 +16,8 @@
 .infoWrapper {
   display: flex;
   align-items: center;
+  margin-right: 52px;
+  flex-wrap: wrap;
 }
 
 .starIcon {
@@ -45,10 +48,6 @@
   top: 2px;
 }
 
-.price {
-  margin-right: 28px;
-}
-
 .price > span {
   color: var(--accent-color);
 }
@@ -56,6 +55,9 @@
 .heartBtn {
   width: 26px;
   height: 26px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
 }
 
 .heartBtn > svg {
@@ -66,4 +68,30 @@
 .heartBtn.favoriteBtn > svg {
   fill: var(--primary-button-color);
   stroke: var(--primary-button-color);
+}
+
+.heartBtn.disableBtn > svg {
+  stroke: var(--form-text-color);
+}
+
+.heartBtn.disableBtn::before {
+  content: 'Please login first';
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  white-space: nowrap;
+  background-color: var(--primary-background-color);
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--primary-border-color);
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in;
+}
+
+.heartBtn.disableBtn:hover::before {
+  opacity: 1;
 }

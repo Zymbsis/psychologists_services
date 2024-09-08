@@ -3,16 +3,22 @@ import { selectFavoritesList } from '@redux/psychologists/selectors';
 import { addToFavorite, deleteFromFavorite } from '@redux/psychologists/slice';
 import { icon } from 'img';
 import css from './PsychologistCardHeader.module.css';
+import { selectIsLoggedIn } from '../../redux/user/selectors';
 
 const PsychologistCardHeader = ({ rating, price, item }) => {
   const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(selectIsLoggedIn);
   const favoriteList = useSelector(selectFavoritesList);
   const isThisCardFavorite = favoriteList.some((elem) => elem._id === item._id);
 
   const onButtonClick = () => {
-    isThisCardFavorite
-      ? dispatch(deleteFromFavorite(item._id))
-      : dispatch(addToFavorite(item));
+    if (isUserLoggedIn) {
+      isThisCardFavorite
+        ? dispatch(deleteFromFavorite(item._id))
+        : dispatch(addToFavorite(item));
+    } else {
+      console.log(55);
+    }
   };
 
   return (
@@ -26,14 +32,16 @@ const PsychologistCardHeader = ({ rating, price, item }) => {
         <p className={css.price}>
           Price / 1 hour: <span>{price}&#36;</span>
         </p>
-        <button
-          className={`${css.heartBtn} ${isThisCardFavorite && css.favoriteBtn}`}
-          onClick={onButtonClick}>
-          <svg className={css.heartIcon}>
-            <use href={`${icon}#icon-heart`} />
-          </svg>
-        </button>
       </div>
+      <button
+        className={`${css.heartBtn} ${
+          isThisCardFavorite && isUserLoggedIn && css.favoriteBtn
+        } ${!isUserLoggedIn && css.disableBtn}`}
+        onClick={onButtonClick}>
+        <svg className={css.heartIcon}>
+          <use href={`${icon}#icon-heart`} />
+        </svg>
+      </button>
     </div>
   );
 };
