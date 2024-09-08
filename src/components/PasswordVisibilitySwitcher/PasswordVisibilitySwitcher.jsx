@@ -14,7 +14,7 @@ const PasswordVisibilitySwitcher = ({
       <svg aria-label='eye'>
         <use
           href={`${icon}#${
-            isPasswordVisible ? 'icon-opened-eye' : 'icon-closed-eye'
+            isPasswordVisible ? 'icon-closed-eye' : 'icon-opened-eye'
           }`}
         />
       </svg>

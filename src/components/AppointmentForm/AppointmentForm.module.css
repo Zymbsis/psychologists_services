@@ -1,3 +1,7 @@
+.container {
+  width: 462px;
+}
+
 .wrapper {
   display: flex;
   gap: 14px;
@@ -24,4 +28,44 @@
   line-height: 1.33;
   display: block;
   margin-bottom: 4px;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.comment {
+  position: relative;
+}
+
+.comment > textarea {
+  border: 1px solid var(--primary-border-color);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 100%;
+  line-height: 1.25;
+  font-size: 16px;
+  min-height: 116px;
+  transition: border-color 300ms ease-in;
+
+  &:hover {
+    border-color: var(--form-text-color);
+  }
+}
+
+.comment > textarea::placeholder {
+  color: var(--primary-font-color);
+}
+
+.comment.errorComment > textarea {
+  border-color: var(--error-color);
+}
+
+.comment > span {
+  position: absolute;
+  font-size: 12px;
+  left: 10px;
+  bottom: -17px;
+  color: var(--error-color);
 }

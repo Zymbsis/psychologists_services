@@ -26,7 +26,7 @@ const ModalBackdrop = ({ children }) => {
             <use href={`${icon}#icon-close`} />
           </svg>
         </button>
-        {children}
+        <div className={css.contentWrapper}> {children}</div>
       </div>
     </div>
   );

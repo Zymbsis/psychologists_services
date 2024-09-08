@@ -8,6 +8,7 @@ const InputField = ({
   className,
   type = 'text',
   placeholder = inputField,
+  ...props
 }) => {
   return (
     <label className={`${css.label} ${className}`}>
@@ -16,6 +17,7 @@ const InputField = ({
         type={type}
         {...register(inputField)}
         placeholder={placeholder}
+        {...props}
       />
       {children}
       {errors[inputField] && (

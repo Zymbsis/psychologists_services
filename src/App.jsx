@@ -18,12 +18,12 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        dispatch(setUserStatus(true));
+        dispatch(setUserStatus(currentUser.email));
         if (currentUser.displayName) {
           dispatch(setUserName(currentUser.displayName));
         }
       } else {
-        dispatch(setUserStatus(false));
+        dispatch(setUserStatus(null));
       }
     });
     return () => unsubscribe();
