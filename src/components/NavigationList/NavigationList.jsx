@@ -7,11 +7,11 @@ import css from './NavigationList.module.css';
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.activeLink]: isActive });
 
-const NavigationList = () => {
+const NavigationList = ({ className }) => {
   const isUserLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <ul className={css.navLInksList}>
+    <ul className={`${css.navLinksList} ${className}`}>
       <li>
         <NavLink
           className={css.navLink}

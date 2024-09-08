@@ -45,6 +45,6 @@
   min-width: 320px;
   max-width: 1440px;
   margin: 0 auto;
-  padding-left: clamp(16px, 8.8vw, 128px);
-  padding-right: clamp(16px, 8.8vw, 128px);
+  padding-left: clamp(16px, calc((100vw - 160px) / 10), 128px);
+  padding-right: clamp(16px, calc((100vw - 160px) / 10), 128px);
 }

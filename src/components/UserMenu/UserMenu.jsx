@@ -7,13 +7,13 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LogoutPrompt from '../LogoutPrompt/LogoutPrompt';
 import css from './UserMenu.module.css';
 
-const UserMenu = () => {
+const UserMenu = ({ className }) => {
   const { openModal } = useModal();
   const isUserLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectCurrentUser);
 
   return (
-    <div className={css.userBarWrapper}>
+    <div className={`${css.userBarWrapper} ${className}`}>
       {isUserLoggedIn ? (
         <>
           <div className={css.userInfo}>
