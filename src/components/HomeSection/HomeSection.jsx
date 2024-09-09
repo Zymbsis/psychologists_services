@@ -14,27 +14,27 @@ const HomeSection = () => {
           guide in your own life with the help of our experienced psychologists.
         </p>
         <GetStartedLink />
-      </div>
-      <div className={css.featureBadge}>
-        <span>
+        <div className={css.featureBadge}>
+          <span>
+            <svg>
+              <use href={`${icon}#icon-check`} />
+            </svg>
+          </span>
+          <p className={css.badgeText}>
+            Experienced psychologists <span>15,000</span>
+          </p>
+        </div>
+        <span className={css.orangeElement}>
           <svg>
-            <use href={`${icon}#icon-check`} />
+            <use href={`${icon}#icon-users-symbol`} />
           </svg>
         </span>
-        <p className={css.badgeText}>
-          Experienced psychologists <span>15,000</span>
-        </p>
+        <span className={css.violetElement}>
+          <svg>
+            <use href={`${icon}#icon-question-symbol`} />
+          </svg>
+        </span>
       </div>
-      <span className={css.orangeElement}>
-        <svg>
-          <use href={`${icon}#icon-users-symbol`} />
-        </svg>
-      </span>
-      <span className={css.violetElement}>
-        <svg>
-          <use href={`${icon}#icon-question-symbol`} />
-        </svg>
-      </span>
     </div>
   );
 };

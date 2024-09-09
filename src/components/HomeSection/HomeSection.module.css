@@ -1,29 +1,41 @@
 .container {
-  position: relative;
   padding-top: 10px;
-  background-image: image-set(url('../../img/home_background_@1x_webp.webp'), url('../../img/home_background_@1x_png.png'));
-  background-repeat: no-repeat;
-  background-position: center right 128px;
-  background-size: 464px 526px;
-
-  @media only screen and (min-device-pixel-ratio: 2),
-  only screen and (min-resolution: 192dpi),
-  only screen and (min-resolution: 2dppx) {
-    background-image: image-set(url('../../img/home_background_@2x_webp.webp'), url('../../img/home_background_@2x_png.png'));
-  }
+  overflow: hidden;
 }
 
 .contentWrapper {
-  width: 595px;
-  padding: 48px 0 40px 0;
+  position: relative;
+  background-image: url('../../img/home_background_@1x_png.png');
+  background-image: image-set(url('../../img/home_background_@1x_webp.webp') 1x,
+      url('../../img/home_background_@2x_webp.webp') 2x,
+      url('../../img/home_background_@1x_png.png') 1x,
+      url('../../img/home_background_@2x_png.png') 2x);
+  background-repeat: no-repeat;
+  background-size: 464px 526px;
+  background-position: top 0 right 0;
+  padding-top: 48px;
+  padding-bottom: 40px;
+
+  @media screen and (max-width: 375px) {
+    background-size: contain;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-position: top 152px right 0;
+  }
 }
 
 .contentWrapper h1 {
+  max-width: 595px;
   font-size: 80px;
+  margin-bottom: 20px;
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
+
+  @media screen and (max-width: 375px) {
+    font-size: 42px;
+    margin-bottom: calc((100vw + 68.96px) / 1.04);
+  }
 
   span {
     color: var(--primary-button-color);
@@ -32,18 +44,24 @@
 }
 
 .introText {
-  width: 505px;
+  max-width: 510px;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;
   letter-spacing: -0.02em;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 375px) {
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 288px;
+  }
 }
 
 .featureBadge {
   position: absolute;
-  right: 382px;
-  bottom: 75px;
+  right: 254px;
+  bottom: 72px;
   width: 311px;
   height: 118px;
   border-radius: 20px;
@@ -52,6 +70,14 @@
   gap: 16px;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 375px) {
+    left: -10px;
+    bottom: 228px;
+    width: 280px;
+    height: 86px;
+    border-radius: 12px;
+  }
 }
 
 .featureBadge > span {
@@ -62,6 +88,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 375px) {
+    width: 48px;
+    height: 48px;
+    border-radius: 9px;
+  }
 
   svg {
     width: 30px;
@@ -75,10 +107,18 @@
   flex-direction: column;
   gap: 8px;
 
+  @media screen and (max-width: 375px) {
+    font-size: 14px;
+  }
+
   span {
     color: var(--secondary-background-color);
     font-size: 24px;
     font-weight: 700;
+
+    @media screen and (max-width: 375px) {
+      font-size: 18px;
+    }
   }
 }
 
@@ -92,12 +132,16 @@
 }
 
 .orangeElement {
-  top: 42px;
-  right: 90px;
   width: 48px;
   height: 48px;
   background-color: var(--decorative-element-1);
   transform: rotate(15deg);
+  top: 43px;
+  right: -39px;
+
+  @media screen and (max-width: 375px) {
+    top: 190px;
+  }
 
   svg {
     width: 20px;
@@ -107,12 +151,17 @@
 }
 
 .violetElement {
-  top: 190px;
-  right: 587px;
   width: 40px;
   height: 40px;
   background-color: var(--decorative-element-2);
   transform: rotate(-15deg);
+  right: 458px;
+  top: 189px;
+
+  @media screen and (max-width: 375px) {
+    top: 338px;
+    left: -24px;
+  }
 
   svg {
     width: 10px;
