@@ -35,7 +35,7 @@
   width: 100%;
   padding: 144px 0 80px 0;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding: 164px 0 100px 0;
   }
 }

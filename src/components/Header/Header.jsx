@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className={css.header}>
       <div className={`${css.container} container`}>
-        {windowSize < 1440 && (
+        {windowSize < 1280 && (
           <>
             <a
               className={css.logoLink}
@@ -20,7 +20,7 @@ const Header = () => {
             <BurgerMenu />
           </>
         )}
-        {windowSize >= 1440 && (
+        {windowSize >= 1280 && (
           <>
             <nav className={css.navigation}>
               <a

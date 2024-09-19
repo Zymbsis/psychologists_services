@@ -14,6 +14,8 @@ const HomeSection = () => {
           guide in your own life with the help of our experienced psychologists.
         </p>
         <GetStartedLink />
+      </div>
+      <div className={css.decorativeWrapper}>
         <div className={css.featureBadge}>
           <span>
             <svg>

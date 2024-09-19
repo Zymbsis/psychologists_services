@@ -1,40 +1,43 @@
 .container {
   padding-top: 10px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 20px;
+  flex-wrap: wrap;
 }
 
 .contentWrapper {
-  position: relative;
-  background-image: url('../../img/home_background_@1x_png.png');
-  background-image: image-set(url('../../img/home_background_@1x_webp.webp') 1x,
-      url('../../img/home_background_@2x_webp.webp') 2x,
-      url('../../img/home_background_@1x_png.png') 1x,
-      url('../../img/home_background_@2x_png.png') 2x);
-  background-repeat: no-repeat;
-  background-size: 464px 526px;
-  background-position: top 0 right 0;
-  padding-top: 48px;
-  padding-bottom: 40px;
+  max-width: 524px;
 
-  @media screen and (max-width: 375px) {
-    background-size: contain;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-position: top 152px right 0;
+  @media screen and (min-width: 768px) {
+    max-width: 654px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 48px;
+    padding-bottom: 40px;
+    max-width: 592px;
   }
 }
 
-.contentWrapper h1 {
-  max-width: 595px;
-  font-size: 80px;
+.contentWrapper > h1 {
+  font-size: 42px;
   margin-bottom: 20px;
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.02em;
 
-  @media screen and (max-width: 375px) {
-    font-size: 42px;
-    margin-bottom: calc((100vw + 68.96px) / 1.04);
+  @media screen and (min-width: 375px) {
+    font-size: 54px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 72px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 80px;
   }
 
   span {
@@ -44,55 +47,104 @@
 }
 
 .introText {
-  max-width: 510px;
-  font-size: 18px;
+  max-width: 288px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.33;
   letter-spacing: -0.02em;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 16px;
-    margin-bottom: 24px;
-    max-width: 288px;
+  @media screen and (min-width: 375px) {
+    font-size: 18px;
+    max-width: 410px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 510px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.decorativeWrapper {
+  position: relative;
+  background-image: url('../../img/home_background_@1x_png.png');
+  background-image: image-set(url('../../img/home_background_@1x_webp.webp') 1x,
+      url('../../img/home_background_@2x_webp.webp') 2x,
+      url('../../img/home_background_@1x_png.png') 1x,
+      url('../../img/home_background_@2x_png.png') 2x);
+  background-repeat: no-repeat;
+  background-position: top 0 center;
+  width: 100%;
+  height: 372px;
+  background-size: contain;
+
+  @media screen and (min-width: 375px) {
+    background-size: 328px;
+    background-position: top 0 right 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-size: 400px;
+    height: 454px;
+    top: -114px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-size: 464px 526px;
+    width: 464px;
+    height: 526px;
+    top: 0;
   }
 }
 
 .featureBadge {
   position: absolute;
-  right: 254px;
-  bottom: 72px;
-  width: 311px;
-  height: 118px;
-  border-radius: 20px;
-  background-color: var(--primary-button-color);
   display: flex;
   gap: 16px;
   justify-content: center;
   align-items: center;
+  width: 280px;
+  height: 86px;
+  left: -12px;
+  bottom: 37px;
+  border-radius: 12px;
+  background-color: var(--primary-button-color);
 
-  @media screen and (max-width: 375px) {
-    left: -10px;
-    bottom: 228px;
-    width: 280px;
-    height: 86px;
-    border-radius: 12px;
+  @media screen and (min-width: 375px) {
+    right: 64px;
+    left: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 311px;
+    height: 118px;
+    border-radius: 20px;
+    right: 294px;
+    bottom: 64px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    bottom: 75px;
+    left: clamp(-101px, calc((100vw - 1280px) / 160 * -38 + -63px), -63px);
   }
 }
 
 .featureBadge > span {
-  width: 54px;
-  height: 54px;
-  border-radius: 13px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9px;
   background-color: var(--secondary-background-color);
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 375px) {
-    width: 48px;
-    height: 48px;
-    border-radius: 9px;
+  @media screen and (min-width: 768px) {
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
   }
 
   svg {
@@ -102,22 +154,19 @@
 }
 
 .badgeText {
+  font-size: 14px;
   color: var(--secondary-font-color);
   display: inline-flex;
   flex-direction: column;
   gap: 8px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 14px;
-  }
-
   span {
     color: var(--secondary-background-color);
-    font-size: 24px;
     font-weight: 700;
+    font-size: 20px;
 
-    @media screen and (max-width: 375px) {
-      font-size: 18px;
+    @media screen and (min-width: 768px) {
+      font-size: 24px;
     }
   }
 }
@@ -140,8 +189,11 @@
   right: -39px;
 
   @media screen and (max-width: 375px) {
-    top: 190px;
+    top: 54px;
+    right: -24px;
   }
+
+  @media screen and (min-width: 768px) {}
 
   svg {
     width: 20px;
@@ -155,12 +207,21 @@
   height: 40px;
   background-color: var(--decorative-element-2);
   transform: rotate(-15deg);
-  right: 458px;
-  top: 189px;
+  top: 172px;
+  left: -24px;
 
-  @media screen and (max-width: 375px) {
-    top: 338px;
-    left: -24px;
+  @media screen and (min-width: 375px) {
+    right: 312px;
+    left: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    right: 384px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 458px;
+    top: 189px;
   }
 
   svg {
